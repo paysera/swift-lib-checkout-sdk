@@ -17,7 +17,7 @@ final public class CheckoutAPIClient: PSBaseApiClient {
     }
     
     public func getPaymentURL(request: CheckoutURLRequest) -> Promise<CheckoutPaymentURL> {
-        return doRequest(
+        doRequest(
             requestRouter: CheckoutNetworkRouter.paymentURL(
                 request: request
             )

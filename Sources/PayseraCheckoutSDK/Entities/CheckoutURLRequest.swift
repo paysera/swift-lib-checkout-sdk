@@ -12,7 +12,7 @@ public struct CheckoutURLRequest {
 
 extension CheckoutURLRequest {
     func asParameters() -> Parameters? {
-        return [
+        [
             "amount": amount,
             "currency": currency,
             "account": account,

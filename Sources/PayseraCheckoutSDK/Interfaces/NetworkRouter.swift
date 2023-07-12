@@ -21,6 +21,6 @@ extension NetworkRouter {
 
 extension NetworkRouter {
     var baseURL: URL {
-        return URL(string: "https://mobile-checkout-integration.paysera.com/rest/v1")!
+        URL(string: "https://mobile-checkout-integration.paysera.com/rest/v1")!
     }
 }

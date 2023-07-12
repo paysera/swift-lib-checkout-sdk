@@ -10,7 +10,7 @@ public final class CheckoutPaymentType: Mappable {
     public var minTransferAmount: PSMoney!
     public var maxTransferAmount: PSMoney!
     
-    public init?(map: ObjectMapper.Map) { }
+    public init?(map: ObjectMapper.Map) {}
     
     public func mapping(map: ObjectMapper.Map) {
         name              <- map["name"]
@@ -25,7 +25,7 @@ public final class CheckoutPaymentType: Mappable {
 final class CheckoutPaymentResponse: Mappable {
     var items: [CheckoutPaymentType]!
     
-    init?(map: ObjectMapper.Map) { }
+    init?(map: ObjectMapper.Map) {}
     
     func mapping(map: ObjectMapper.Map) {
         items <- map["items"]

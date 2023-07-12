@@ -7,7 +7,7 @@ enum CheckoutNetworkRouter {
 
 extension CheckoutNetworkRouter: NetworkRouter {
     var method: Alamofire.HTTPMethod {
-        return .get
+        .get
     }
     
     var path: String {
@@ -32,6 +32,6 @@ extension CheckoutNetworkRouter: NetworkRouter {
     }
     
     var parameterEncoding: Alamofire.ParameterEncoding {
-        return URLEncoding.default
+        URLEncoding.default
     }
 }
