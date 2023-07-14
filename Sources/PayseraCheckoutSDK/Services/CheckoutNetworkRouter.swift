@@ -1,5 +1,4 @@
 import Alamofire
-import ObjectMapper
 
 enum CheckoutNetworkRouter {
     case paymentTypes(country: String, currency: String)

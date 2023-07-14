@@ -1,14 +1,12 @@
 import Foundation
-//import Alamofire
-import ObjectMapper
 
-public struct CheckoutURLRequest: Mappable {
-    public var paymentTypeId: String
-    public var amount: String
-    public var currency: String
-    public var account: String
-    public var email: String
-    public var lang: String
+public struct CheckoutURLRequest {
+    public let paymentTypeId: String
+    public let amount: String
+    public let currency: String
+    public let account: String
+    public let email: String
+    public let lang: String
     
     public init(
         paymentTypeId: String,
@@ -25,25 +23,16 @@ public struct CheckoutURLRequest: Mappable {
         self.email = email
         self.lang = lang
     }
-    
-    public init?(map: ObjectMapper.Map) {
-        do {
-            paymentTypeId = ""
-            amount = try map.value("amount")
-            currency = try map.value("currency")
-            account = try map.value("account")
-            email = try map.value("email")
-            lang = try map.value("lang")
-        } catch {
-            return nil
-        }
-    }
-    
-    public mutating func mapping(map: ObjectMapper.Map) {
-        amount   <- map["amount"]
-        currency <- map["currency"]
-        account  <- map["account"]
-        email    <- map["email"]
-        lang     <- map["lang"]
+}
+
+extension CheckoutURLRequest {
+    func toJSON() -> [String: Any] {
+        [
+            "amount": amount,
+            "currency": currency,
+            "account": account,
+            "email": email,
+            "lang": lang
+        ]
     }
 }
