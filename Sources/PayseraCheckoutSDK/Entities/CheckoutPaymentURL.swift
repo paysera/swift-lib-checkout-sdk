@@ -10,5 +10,3 @@ public final class CheckoutPaymentURL: Mappable {
         paymentURL <- map["payment_url"]
     }
 }
-
-

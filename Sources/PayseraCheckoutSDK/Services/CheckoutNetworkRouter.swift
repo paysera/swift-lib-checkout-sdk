@@ -1,4 +1,5 @@
 import Alamofire
+import ObjectMapper
 
 enum CheckoutNetworkRouter {
     case paymentTypes(country: String, currency: String)
@@ -19,7 +20,7 @@ extension CheckoutNetworkRouter: NetworkRouter {
         }
     }
     
-    var parameters: Parameters? {
+    var parameters: [String: Any]? {
         switch self {
         case .paymentTypes(let country, let currency):
             return [
@@ -27,7 +28,7 @@ extension CheckoutNetworkRouter: NetworkRouter {
                 "currency": currency
             ]
         case .paymentURL(let request):
-            return request.asParameters()
+            return request.toJSON()
         }
     }
     
