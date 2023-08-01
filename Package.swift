@@ -1,5 +1,4 @@
 // swift-tools-version: 5.7
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
@@ -11,15 +10,16 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            name: "PayseraCommonSDK",
             url: "https://github.com/paysera/swift-lib-common-sdk",
-            .exact("4.2.3")
+            from: "4.3.0"
         )
     ],
     targets: [
         .target(
             name: "PayseraCheckoutSDK",
-            dependencies: ["PayseraCommonSDK"]
+            dependencies: [
+                .product(name: "PayseraCommonSDK", package: "swift-lib-common-sdk")
+            ]
         ),
         .testTarget(
             name: "PayseraCheckoutSDKTests",
