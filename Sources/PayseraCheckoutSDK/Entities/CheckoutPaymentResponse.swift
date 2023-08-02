@@ -8,7 +8,7 @@ public final class CheckoutPaymentType: Mappable {
     public var countries: [String]!
     public var currencies: [String]!
     public var minTransferAmount: PSMoney!
-    public var maxTransferAmount: PSMoney!
+    public var maxTransferAmount: PSMoney?
     
     public init?(map: ObjectMapper.Map) {}
     
