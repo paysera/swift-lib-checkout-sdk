@@ -7,6 +7,9 @@ public final class CheckoutPaymentURL: Mappable {
     public init?(map: ObjectMapper.Map) {}
     
     public func mapping(map: ObjectMapper.Map) {
-        paymentURL <- map["payment_url"]
+        do {
+            let paymentURI: String = try map.value("payment_url", default: "")
+            paymentURL = URL(string: paymentURI)
+        } catch {}
     }
 }
