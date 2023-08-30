@@ -1,10 +1,5 @@
 import Foundation
 
-/*
- country: String? = nil,
- currency: String? = nil,
- group: String? = nil,
- */
 public struct PSCheckoutPaymentTypesRequestFilters {
     public let country: String?
     public let currency: String?
