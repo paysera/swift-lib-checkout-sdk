@@ -1,7 +1,7 @@
 import Foundation
 import ObjectMapper
 
-public final class CheckoutPaymentURLs: Mappable {
+public final class PSCheckoutPaymentURLs: Mappable {
     public var paymentURL: URL?
     public var acceptURL: URL?
     public var cancelURL: URL?

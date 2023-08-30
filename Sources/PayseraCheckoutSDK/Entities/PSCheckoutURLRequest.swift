@@ -1,6 +1,6 @@
 import Foundation
 
-public struct CheckoutURLRequest {
+public struct PSCheckoutURLRequest {
     public let paymentTypeId: String
     public let amount: String
     public let currency: String
@@ -22,7 +22,7 @@ public struct CheckoutURLRequest {
     }
 }
 
-extension CheckoutURLRequest {
+extension PSCheckoutURLRequest {
     func toJSON() -> [String: Any] {
         [
             "amount": amount,

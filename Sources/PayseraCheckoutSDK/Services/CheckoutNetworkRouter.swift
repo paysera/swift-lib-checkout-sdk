@@ -2,8 +2,8 @@ import Alamofire
 import Foundation
 
 enum CheckoutNetworkRouter {
-    case paymentTypes(country: String, currency: String, locale: String)
-    case paymentURL(request: CheckoutURLRequest, locale: String)
+    case paymentTypes(country: String?, currency: String?, group: String?, locale: String)
+    case paymentURL(request: PSCheckoutURLRequest, locale: String)
 }
 
 extension CheckoutNetworkRouter: NetworkRouter {
@@ -22,7 +22,7 @@ extension CheckoutNetworkRouter: NetworkRouter {
     
     var locale: String {
         switch self {
-        case .paymentTypes(_, _, let locale):
+        case let .paymentTypes(_, _, _, locale):
             return locale
         case .paymentURL(_, let locale):
             return locale
@@ -31,12 +31,13 @@ extension CheckoutNetworkRouter: NetworkRouter {
     
     var parameters: [String: Any]? {
         switch self {
-        case .paymentTypes(let country, let currency, _):
-            return [
-                "country": country,
-                "currency": currency
-            ]
-        case .paymentURL(let request, _):
+        case let .paymentTypes(country, currency, group, _):
+            var params = [String: Any]()
+            params["country"] = country
+            params["currency"] = currency
+            params["group"] = group
+            return params
+        case let .paymentURL(request, _):
             return request.toJSON()
         }
     }
