@@ -5,6 +5,7 @@ import PayseraCommonSDK
 protocol NetworkRouter: URLRequestConvertible {
     var baseURL: URL { get }
     var method: HTTPMethod { get }
+    var locale: String { get }
     var path: String { get }
     var parameters: Parameters? { get }
     var parameterEncoding: ParameterEncoding { get }
@@ -14,6 +15,7 @@ extension NetworkRouter {
     func asURLRequest() throws -> URLRequest {
         let url = baseURL.appendingPathComponent(path)
         var urlRequest = URLRequest(url: url)
+        urlRequest.addValue(locale, forHTTPHeaderField: "Accept-Language")
         urlRequest.method = method
         return try parameterEncoding.encode(urlRequest, with: parameters)
     }

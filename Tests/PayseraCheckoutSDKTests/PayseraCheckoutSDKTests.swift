@@ -15,7 +15,8 @@ final class PayseraCheckoutSDKTests: XCTestCase {
         executeNonNil(
             checkoutAPIClient.getPaymentTypes(
                 country: "Lithuania",
-                currency: "EUR"
+                currency: "EUR",
+                locale: "en"
             ),
             description: "Should return payment types"
         )
@@ -24,14 +25,14 @@ final class PayseraCheckoutSDKTests: XCTestCase {
     func testGetPaymentURL() throws {
         executeNonNil(
             checkoutAPIClient.getPaymentURL(
-                request: CheckoutURLRequest(
+                request: PSCheckoutURLRequest(
                     paymentTypeId: "",
                     amount: "100.0",
                     currency: "EUR",
                     account: "",
-                    email: "test@pauysera.com",
-                    lang: "en"
-                )
+                    email: "test@pauysera.com"
+                ),
+                locale: "en"
             ),
             description: "Should return payment url"
         )
