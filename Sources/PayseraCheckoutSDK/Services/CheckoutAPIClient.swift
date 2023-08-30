@@ -5,21 +5,27 @@ import Alamofire
 final public class CheckoutAPIClient: PSBaseApiClient {
     public func getPaymentTypes(
         country: String,
-        currency: String
+        currency: String,
+        locale: String
     ) -> Promise<[CheckoutPaymentType]> {
         let request: Promise<CheckoutPaymentResponse> = doRequest(
             requestRouter: CheckoutNetworkRouter.paymentTypes(
                 country: country,
-                currency: currency
+                currency: currency,
+                locale: locale
             )
         )
         return request.map(\.items)
     }
     
-    public func getPaymentURL(request: CheckoutURLRequest) -> Promise<CheckoutPaymentURL> {
+    public func getPaymentURL(
+        request: CheckoutURLRequest,
+        locale: String
+    ) -> Promise<CheckoutPaymentURLs> {
         doRequest(
             requestRouter: CheckoutNetworkRouter.paymentURL(
-                request: request
+                request: request,
+                locale: locale
             )
         )
     }
